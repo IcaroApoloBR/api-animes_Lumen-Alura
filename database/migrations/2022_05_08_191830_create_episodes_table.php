@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('anime_id');
 
             $table->foreign('anime_id')
-                ->references('animes')
-                ->on('id');
+                ->references('id')
+                ->on('animes');
         });
     }
 
