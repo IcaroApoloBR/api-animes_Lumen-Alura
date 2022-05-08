@@ -18,6 +18,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => '/api'], function () use ($router) {
-    $router->get('/animes', 'AnimesController@index');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('animes', 'AnimesController@store');
+    $router->get('animes', 'AnimesController@index');
 });

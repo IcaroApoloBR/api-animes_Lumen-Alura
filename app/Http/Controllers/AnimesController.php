@@ -11,4 +11,10 @@ class AnimesController extends Controller
     {
         return Anime::all();
     }
+
+    public function store(Request $request)
+    {
+        return response()
+            ->json(Anime::create(['name' => $request->name]), 201);
+    }
 }
