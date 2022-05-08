@@ -21,4 +21,6 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('animes', 'AnimesController@store');
     $router->get('animes', 'AnimesController@index');
+    $router->get('animes/{id}', 'AnimesController@show');
+    $router->put('animes/{id}', 'AnimesController@update');
 });
