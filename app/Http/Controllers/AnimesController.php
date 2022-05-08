@@ -42,4 +42,16 @@ class AnimesController extends Controller
 
         return $anime;
     }
+
+    public function destroy($id)
+    {
+        $qtdResourceRemove = Anime::destroy($id);
+        if ($qtdResourceRemove === 0) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+
+        return response()->json(['', 204]);
+    }
 }

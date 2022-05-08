@@ -23,4 +23,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('animes', 'AnimesController@index');
     $router->get('animes/{id}', 'AnimesController@show');
     $router->put('animes/{id}', 'AnimesController@update');
+    $router->delete('animes/{id}', 'AnimesController@destroy');
 });
