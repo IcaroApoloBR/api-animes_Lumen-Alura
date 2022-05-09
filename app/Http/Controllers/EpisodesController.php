@@ -10,4 +10,9 @@ class EpisodesController extends BaseController
     {
         $this->class = Episode::class;
     }
+
+    public function getWatchedAttribute($watched): bool
+    {
+        return $watched;
+    }
 }
