@@ -11,8 +11,12 @@ class EpisodesController extends BaseController
         $this->class = Episode::class;
     }
 
-    public function getWatchedAttribute($watched): bool
+    public function searchPerAnime(int $animeId)
     {
-        return $watched;
+        $episodes = Episode::query()
+        ->where('anime_id', $animeId)
+        ->get();
+
+        return $episodes;
     }
 }

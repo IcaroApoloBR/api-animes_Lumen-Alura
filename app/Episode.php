@@ -13,4 +13,9 @@ class Episode extends Model
     {
         return $this->belongsTo(Anime::class);
     }
+
+    public function getWatchedAttribute($watched): bool
+    {
+        return $watched;
+    }
 }
