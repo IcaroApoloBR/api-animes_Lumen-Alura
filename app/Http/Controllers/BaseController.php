@@ -8,9 +8,9 @@ abstract class BaseController extends Controller
 {
     protected $class;
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->class::all();
+        return $this->class::paginate($request->per_page);
     }
 
     public function store(Request $request)

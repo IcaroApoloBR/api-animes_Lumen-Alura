@@ -8,6 +8,7 @@ class Anime extends Model
 {
     public $timestamps = false;
     protected $fillable = ['name'];
+    // protected $perPage = 3; // default == 15
 
     public function episodes()
     {
