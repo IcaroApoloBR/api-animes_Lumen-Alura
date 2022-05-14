@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\User;
 use Illuminate\Auth\GenericUser;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -38,10 +40,13 @@ class AuthServiceProvider extends ServiceProvider
             }
             $authorizationHeader = $request->header('Authorization');
             $token = str_replace('Bearer ', '', $authorizationHeader);
-            $dataAuthenticate = JWT::decode($token, '', ['HS256']);
 
-            return new GenericUser(['email' => $dataAuthenticate]);
-            // return User::where('email', $dataAuthenticate['email'])->first();
+            $key = new Key(env('JWT_KEY'), 'HS256');
+            
+            $dataAuthenticate = (array) JWT::decode($token, $key);
+
+            // return new GenericUser(['email' => $dataAuthenticate]);
+            return User::where('email', $dataAuthenticate['email'])->first();
         });
     }
 }
