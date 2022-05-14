@@ -20,7 +20,7 @@ class Episode extends Model
         return $watched;
     }
 
-    public function getLinksAttribute($links): array
+    public function getLinksAttribute(): array
     {
         return [
             'self' => '/api/episodes/' . $this->id,

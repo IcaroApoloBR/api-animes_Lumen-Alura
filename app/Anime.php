@@ -16,7 +16,7 @@ class Anime extends Model
         return $this->hasMany(Episode::class);
     }
 
-    public function getLinksAttribute($link): array
+    public function getLinksAttribute(): array
     {
         return [
             'self' => '/api/animes/' . $this->id,
