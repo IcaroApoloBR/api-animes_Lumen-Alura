@@ -43,10 +43,10 @@ class AuthServiceProvider extends ServiceProvider
 
             $key = new Key(env('JWT_KEY'), 'HS256');
             
-            $dataAuthenticate = (array) JWT::decode($token, $key);
+            $dataAuthenticate = JWT::decode($token, $key);
 
             // return new GenericUser(['email' => $dataAuthenticate]);
-            return User::where('email', $dataAuthenticate['email'])->first();
+            return User::where('email', $dataAuthenticate->email)->first();
         });
     }
 }
